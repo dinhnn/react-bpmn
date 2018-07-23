@@ -1,10 +1,15 @@
 import React, { Component, Fragment } from "react";
 // import BpmnModeler from "bpmn-js/lib/Modeler";
 import BpmnModeler from "./custom-modeler";
-import propertiesPanelModule from "bpmn-js-properties-panel";
-// import propertiesProviderModule from "bpmn-js-properties-panel/lib/provider/bpmn";
-import propertiesProviderModule from "./provider/magic";
-import magicModdleDescriptor from "./descriptors/magic";
+//import propertiesPanelModule from "bpmn-js-properties-panel";
+//import propertiesProviderModule from "bpmn-js-properties-panel/lib/provider/bpmn";
+import propertiesProviderModule from "./provider/nido";
+import vtpModdleDescriptor from "./descriptors/vtp";
+
+import propertiesPanelModule from 'bpmn-js-properties-panel';
+//import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/camunda';
+
+
 
 import ZoomControls from "./components/ZoomControls";
 import FileControls from "./components/FileControls";
@@ -27,7 +32,7 @@ export default class extends Component {
         parent: "#properties-panel"
       },
       moddleExtensions: {
-        magic: magicModdleDescriptor
+        camunda: vtpModdleDescriptor
       }
     });
 
