@@ -8,7 +8,7 @@ var entryFactory = require('bpmn-js-properties-panel/lib/factory/EntryFactory'),
 var assign = require('lodash/assign');
 var map = require('lodash/map');
 
-var DEFAULT_DELEGATE_PROPS = [ 'class', 'expression', 'delegateExpression' ];
+var DEFAULT_DELEGATE_PROPS = [ 'class','expression', 'delegateExpression' ];
 
 var DELEGATE_PROPS = {
   'camunda:class': undefined,
@@ -34,7 +34,7 @@ var EXTERNAL_CAPABLE_PROPS = {
 module.exports = function(element, bpmnFactory, options, translate) {
 
   var DEFAULT_OPTIONS = [
-    { value: 'class', name: translate('Java Class') },
+    { value: 'class', name: translate('Event Bus') },
     { value: 'expression', name: translate('Expression') },
     { value: 'delegateExpression', name: translate('Delegate Expression') }
   ];

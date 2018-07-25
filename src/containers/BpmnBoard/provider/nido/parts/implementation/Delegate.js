@@ -32,7 +32,7 @@ module.exports = function(element, bpmnFactory, options, translate) {
   function getDelegationLabel(type) {
     switch (type) {
     case 'class':
-      return translate('Java Class');
+      return translate('Event Bus Address');
     case 'expression':
       return translate('Expression');
     case 'delegateExpression':

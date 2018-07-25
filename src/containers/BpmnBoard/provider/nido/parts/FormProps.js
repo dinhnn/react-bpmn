@@ -191,41 +191,41 @@ module.exports = function(group, element, bpmnFactory, translate) {
   group.entries.push(formFieldsEntry);
 
   // [FormData] business key form field select box
-  var formBusinessKeyFormFieldEntry = entryFactory.selectBox({
-    id: 'form-business-key',
-    label: translate('Business Key'),
-    modelProperty: 'businessKey',
-    selectOptions: function(element, inputNode) {
-      var selectOptions = [{ name: '', value: '' }];
-      var formFields = formHelper.getFormFields(element);
-      each(formFields, function(field) {
-        if (field.type !== 'boolean') {
-          selectOptions.push({ name: field.id, value: field.id });
-        }
-      });
-      return selectOptions;
-    },
-    get: function(element, node) {
-      var result = { businessKey: '' };
-      var bo = getBusinessObject(element);
-      var formDataExtension = getExtensionElements(bo, 'camunda:FormData');
-      if (formDataExtension) {
-        var formData = formDataExtension[0];
-        var storedValue = formData.get('businessKey');
-        result = { businessKey: storedValue };
-      }
-      return result;
-    },
-    set: function(element, values, node) {
-      var formData = getExtensionElements(getBusinessObject(element), 'camunda:FormData')[0];
-      return cmdHelper.updateBusinessObject(element, formData, { 'businessKey': values.businessKey || undefined });
-    },
-    hidden: function(element, node) {
-      var isStartEvent = is(element,'bpmn:StartEvent');
-      return !(isStartEvent && formHelper.getFormFields(element).length > 0);
-    }
-  });
-  group.entries.push(formBusinessKeyFormFieldEntry);
+  // var formBusinessKeyFormFieldEntry = entryFactory.selectBox({
+  //   id: 'form-business-key',
+  //   label: translate('Business Key'),
+  //   modelProperty: 'businessKey',
+  //   selectOptions: function(element, inputNode) {
+  //     var selectOptions = [{ name: '', value: '' }];
+  //     var formFields = formHelper.getFormFields(element);
+  //     each(formFields, function(field) {
+  //       if (field.type !== 'boolean') {
+  //         selectOptions.push({ name: field.id, value: field.id });
+  //       }
+  //     });
+  //     return selectOptions;
+  //   },
+  //   get: function(element, node) {
+  //     var result = { businessKey: '' };
+  //     var bo = getBusinessObject(element);
+  //     var formDataExtension = getExtensionElements(bo, 'camunda:FormData');
+  //     if (formDataExtension) {
+  //       var formData = formDataExtension[0];
+  //       var storedValue = formData.get('businessKey');
+  //       result = { businessKey: storedValue };
+  //     }
+  //     return result;
+  //   },
+  //   set: function(element, values, node) {
+  //     var formData = getExtensionElements(getBusinessObject(element), 'camunda:FormData')[0];
+  //     return cmdHelper.updateBusinessObject(element, formData, { 'businessKey': values.businessKey || undefined });
+  //   },
+  //   hidden: function(element, node) {
+  //     var isStartEvent = is(element,'bpmn:StartEvent');
+  //     return !(isStartEvent && formHelper.getFormFields(element).length > 0);
+  //   }
+  // });
+  //group.entries.push(formBusinessKeyFormFieldEntry);
 
   // [FormData] Form Field label
   group.entries.push(entryFactory.label({
@@ -423,6 +423,7 @@ module.exports = function(group, element, bpmnFactory, translate) {
     modelProperties: [ 'name', 'config' ],
     labels: [ translate('Name'), translate('Config') ],
     addLabel: translate('Add Constraint'),
+    description:'String:<br/>minLength,maxLength,pattern<br/>Number:<br/>maximum,minimum',
     getElements: function(element, node) {
       var formField = getSelectedFormField(element, node);
 

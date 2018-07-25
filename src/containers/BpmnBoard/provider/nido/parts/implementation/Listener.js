@@ -20,7 +20,7 @@ var CAMUNDA_TASK_LISTENER_ELEMENT = 'camunda:TaskListener';
 module.exports = function(element, bpmnFactory, options, translate) {
 
   var LISTENER_TYPE_LABEL = {
-    class: translate('Java Class'),
+    class: translate('Event Bus'),    
     expression: translate('Expression'),
     delegateExpression: translate('Delegate Expression'),
     script: translate('Script')

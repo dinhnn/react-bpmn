@@ -9,7 +9,7 @@ var cmdHelper = require('bpmn-js-properties-panel/lib/helper/CmdHelper'),
 
 
 var LISTENER_TYPE_LABEL = {
-  class: 'Java Class',
+  class: 'Event Bus Address',
   expression: 'Expression',
   delegateExpression: 'Delegate Expression',
   script: 'Script'
@@ -93,7 +93,7 @@ module.exports = function(group, element, bpmnFactory, options, translate) {
     id: 'listener-type',
     label: translate('Listener Type'),
     selectOptions: [
-      { value: classProp, name: translate('Java Class') },
+      { value: classProp, name: translate('Event Bus') },
       { value: expressionProp, name: translate('Expression') },
       { value: delegateExpressionProp, name: translate('Delegate Expression') },
       { value: scriptProp, name: translate('Script') }
@@ -137,7 +137,7 @@ module.exports = function(group, element, bpmnFactory, options, translate) {
       var value = {},
           listener = getSelectedListener(element, node),
           listenerType = ImplementationTypeHelper.getImplementationType(listener);
-
+      console.log("listenerType:"+listenerType);
       value.listenerValueLabel = LISTENER_TYPE_LABEL[listenerType] || '';
       value.listenerValue = (listener && listener.get(listenerType)) || undefined;
 

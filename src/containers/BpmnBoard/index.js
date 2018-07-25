@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-// import BpmnModeler from "bpmn-js/lib/Modeler";
-import BpmnModeler from "./custom-modeler";
+import BpmnModeler from "bpmn-js/lib/Modeler";
+//import BpmnModeler from "./custom-modeler";
 //import propertiesPanelModule from "bpmn-js-properties-panel";
 //import propertiesProviderModule from "bpmn-js-properties-panel/lib/provider/bpmn";
 import propertiesProviderModule from "./provider/nido";
@@ -14,7 +14,6 @@ import propertiesPanelModule from 'bpmn-js-properties-panel';
 import ZoomControls from "./components/ZoomControls";
 import FileControls from "./components/FileControls";
 import EditingTools from './components/EditingTools';
-
 import "./style/app.less";
 
 import xmlStr from "../../assets/bpmn/xmlStr";
@@ -24,7 +23,6 @@ let scale = 1;
 export default class extends Component {
   componentDidMount() {
     document.body.className = "shown";
-
     this.bpmnModeler = new BpmnModeler({
       additionalModules: [propertiesPanelModule, propertiesProviderModule],
       container: "#canvas",
@@ -124,12 +122,6 @@ export default class extends Component {
           onZoomIn={this.handleZoomIn}
           onZoomOut={this.handleZoomOut}
           onZoomReset={this.handleZoomReset}
-        />
-        <FileControls
-          onOpen={this.handleOpen}
-          onCreate={this.handleCreate}
-          onSaveFile={this.handleSaveFile}
-          onSaveImage={this.handleSaveImage}
         />
         <EditingTools
           onSave={this.handleSave}
